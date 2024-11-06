@@ -35,6 +35,7 @@ namespace Mastermin {
 
         public static void Main(string[] args)
         {
+
             int maxAttempts = 10;
             do
             {
@@ -60,7 +61,7 @@ namespace Mastermin {
                 Console.WriteLine(AttemptPrefix+$"{attempt}/{maxAttempts}");
                 if (attempt > 0)
                 {
-                    Console.WriteLine(Hint(hint, ref hints, userCombination));
+                    CompleteHint(hint, userCombination);
                 }
 
                 maxAttempts = GetUserCombination(userCombination,maxAttempts);
@@ -93,16 +94,50 @@ namespace Mastermin {
             return GetContinue();
         }
 
-        public static string Hint(string hint, ref string hints, int[] lastAttempt)
+        public static void CompleteHint(string hint, int[] lastAttempt)
         {
             string attempt = "";
+
+            Console.WriteLine(); // Salto de línea después de mostrar el intento
+
+            // Agrega el intento con su pista al historial de pistas
+            Console.Write("{" + hint + "}|{"); Hint(lastAttempt, attempt); Console.WriteLine("}\n");
+        }
+        public static void Hint(int[] lastAttempt, string attempt) {
             for (int i = 0; i < lastAttempt.Length; i++)
             {
-                attempt = attempt + lastAttempt[i];
+                switch (lastAttempt[i])
+                {
+                    case 1:
+                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                        break;
+                    case 2:
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
+                        break;
+                    case 3:
+                        Console.BackgroundColor = ConsoleColor.DarkYellow;
+                        break;
+                    case 4:
+                        Console.BackgroundColor = ConsoleColor.DarkCyan;
+                        break;
+                    case 5:
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        break;
+                    case 6:
+                        Console.BackgroundColor = ConsoleColor.DarkGray;
+                        break;
+                    default:
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        break;
+                }
+
+                Console.Write(lastAttempt[i]);
+                attempt += lastAttempt[i];
+
+                Console.BackgroundColor = ConsoleColor.Black;
             }
-            hints = hints + "{" + $"{attempt}" + "}|{" + $"{hint}" + "}\n";
-            return hints;
         }
+
 
         public static int GetContinue()
         {
