@@ -1,0 +1,15 @@
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\obj\Debug\net8.0\Mastermind.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\obj\Debug\net8.0\Mastermind.AssemblyInfoInputs.cache
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\obj\Debug\net8.0\Mastermind.AssemblyInfo.cs
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\obj\Debug\net8.0\Mastermind.csproj.CoreCompileInputs.cache
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\obj\Debug\net8.0\Mastermind.sourcelink.json
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\bin\Debug\net8.0\Mastermind.exe
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\bin\Debug\net8.0\Mastermind.deps.json
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\bin\Debug\net8.0\Mastermind.runtimeconfig.json
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\bin\Debug\net8.0\Mastermind.dll
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\bin\Debug\net8.0\Mastermind.pdb
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\obj\Debug\net8.0\Mastermind.dll
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\obj\Debug\net8.0\refint\Mastermind.dll
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\obj\Debug\net8.0\Mastermind.pdb
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\obj\Debug\net8.0\Mastermind.genruntimeconfig.cache
+C:\Users\isard\Documents\Programacion\t2-pr1-mastermind-YerayRodriguezLopez\MastermindYerayRodriguezLopez\Mastermind\obj\Debug\net8.0\ref\Mastermind.dll
