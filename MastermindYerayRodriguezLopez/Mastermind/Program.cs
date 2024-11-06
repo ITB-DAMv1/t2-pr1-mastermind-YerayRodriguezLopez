@@ -4,7 +4,7 @@ namespace Mastermin
 {
     public class Mastermind
     {
-        const string Title = "888b     d888                   888                                  d8b               888\n" +
+        const string Title =    "888b     d888                   888                                  d8b               888\n" +
                                 "8888b   d8888                   888                                  Y8P               888\n" +
                                 "88888b.d88888                   888                                                    888\n" +
                                 "888Y88888P888  8888b.  .d8888b  888888 .d88b.  888d888 88888b.d88b.  888 88888b.   .d88888\n" +
@@ -78,6 +78,8 @@ namespace Mastermin
 
                 if (hint == "OOOO")
                 {
+                    Console.Clear();
+                    Console.WriteLine(Title);
                     CompleteHint(hint, userCombination);
                     Console.WriteLine(Win);
                     won = true;
@@ -90,6 +92,7 @@ namespace Mastermin
 
             if (!won)
             {
+                Console.WriteLine(Title);
                 Console.WriteLine($"{Lose}{string.Join(" ", secretCombination)}"); // Show correct combination on loss
             }
             Console.WriteLine(AskToContinue);
