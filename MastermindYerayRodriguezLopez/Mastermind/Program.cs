@@ -1,15 +1,16 @@
 ﻿using System;
 
-namespace Mastermin {
+namespace Mastermin
+{
     public class Mastermind
     {
-        const string Title =    "888b     d888                   888                                  d8b               888\n"+
-                                "8888b   d8888                   888                                  Y8P               888\n"+
-                                "88888b.d88888                   888                                                    888\n"+
-                                "888Y88888P888  8888b.  .d8888b  888888 .d88b.  888d888 88888b.d88b.  888 88888b.   .d88888\n"+
-                                "888 Y888P 888      88b 88K      888   d8P  Y8b 888P    888  888  88b 888 888  88b d88  888\n"+
-                                "888  Y8P  888 .d888888  Y8888b. 888   88888888 888     888  888  888 888 888  888 888  888\n"+
-                                "888       888 888  888      X88 Y88b. Y8b.     888     888  888  888 888 888  888 Y88b 888\n"+
+        const string Title = "888b     d888                   888                                  d8b               888\n" +
+                                "8888b   d8888                   888                                  Y8P               888\n" +
+                                "88888b.d88888                   888                                                    888\n" +
+                                "888Y88888P888  8888b.  .d8888b  888888 .d88b.  888d888 88888b.d88b.  888 88888b.   .d88888\n" +
+                                "888 Y888P 888      88b 88K      888   d8P  Y8b 888P    888  888  88b 888 888  88b d88  888\n" +
+                                "888  Y8P  888 .d888888  Y8888b. 888   88888888 888     888  888  888 888 888  888 888  888\n" +
+                                "888       888 888  888      X88 Y88b. Y8b.     888     888  888  888 888 888  888 Y88b 888\n" +
                                 "888       888  Y888888  88888P    Y888  Y8888  888     888  888  888 888 888  888   Y88888";
 
         const string Menu = " ________________________________ \n" +
@@ -35,15 +36,15 @@ namespace Mastermin {
 
         public static void Main(string[] args)
         {
-
+            //We use maxAttempts also as a form for the user to exit.
             int maxAttempts = 10;
             do
             {
                 Console.Clear();
                 ShowWelcomeMessage();
                 maxAttempts = SelectDifficulty();
-                maxAttempts = maxAttempts > 0 ?  Game(maxAttempts) : maxAttempts;
-            } while (maxAttempts > 0);
+                maxAttempts = maxAttempts > 0 ? Game(maxAttempts) : maxAttempts;
+            } while (maxAttempts > 0); // Repeat if user wants to continue
         }
 
         public static int Game(int maxAttempts)
@@ -52,19 +53,20 @@ namespace Mastermin {
             int[] userCombination = new int[secretCombination.Length];
             bool won = false;
             string hint = "";
-            string hints = "";
+
             Console.Clear();
 
             for (int attempt = 0; attempt < maxAttempts && !won; attempt++)
             {
                 Console.WriteLine(Title);
-                Console.WriteLine(AttemptPrefix+$"{attempt}/{maxAttempts}");
-                if (attempt > 0)
+                Console.WriteLine(AttemptPrefix + $"{attempt+1}/{maxAttempts}");
+
+                if (attempt > 0 && !won)
                 {
-                    CompleteHint(hint, userCombination);
+                    CompleteHint(hint, userCombination); // Show hint for previous attempts
                 }
 
-                maxAttempts = GetUserCombination(userCombination,maxAttempts);
+                maxAttempts = GetUserCombination(userCombination, maxAttempts); // Get user input
 
                 if (userCombination == null)
                 {
@@ -72,10 +74,11 @@ namespace Mastermin {
                     return 0;
                 }
 
-                hint = GenerateHint(userCombination, secretCombination);
+                hint = GenerateHint(userCombination, secretCombination); // Generate hint based on user's guess
 
                 if (hint == "OOOO")
                 {
+                    CompleteHint(hint, userCombination);
                     Console.WriteLine(Win);
                     won = true;
                 }
@@ -87,73 +90,52 @@ namespace Mastermin {
 
             if (!won)
             {
-                Console.WriteLine($"{Lose}{string.Join(" ", secretCombination)}");
+                Console.WriteLine($"{Lose}{string.Join(" ", secretCombination)}"); // Show correct combination on loss
             }
             Console.WriteLine(AskToContinue);
-    
+
             return GetContinue();
         }
 
+        // Display hint for previous attempts
         public static void CompleteHint(string hint, int[] lastAttempt)
         {
-            string attempt = "";
-
-            Console.WriteLine(); // Salto de línea después de mostrar el intento
-
-            // Agrega el intento con su pista al historial de pistas
-            Console.Write("{" + hint + "}|{"); Hint(lastAttempt, attempt); Console.WriteLine("}\n");
+            Console.Write("\n{" + hint + "}|{");
+            Hint(lastAttempt, "");
+            Console.WriteLine("}\n");
         }
-        public static void Hint(int[] lastAttempt, string attempt) {
+
+        // Display last attempt numbers with colored background
+        public static void Hint(int[] lastAttempt, string attempt)
+        {
             for (int i = 0; i < lastAttempt.Length; i++)
             {
                 switch (lastAttempt[i])
                 {
-                    case 1:
-                        Console.BackgroundColor = ConsoleColor.DarkBlue;
-                        break;
-                    case 2:
-                        Console.BackgroundColor = ConsoleColor.DarkGreen;
-                        break;
-                    case 3:
-                        Console.BackgroundColor = ConsoleColor.DarkYellow;
-                        break;
-                    case 4:
-                        Console.BackgroundColor = ConsoleColor.DarkCyan;
-                        break;
-                    case 5:
-                        Console.BackgroundColor = ConsoleColor.DarkRed;
-                        break;
-                    case 6:
-                        Console.BackgroundColor = ConsoleColor.DarkGray;
-                        break;
-                    default:
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        break;
+                    case 1: Console.BackgroundColor = ConsoleColor.DarkBlue; break;
+                    case 2: Console.BackgroundColor = ConsoleColor.DarkGreen; break;
+                    case 3: Console.BackgroundColor = ConsoleColor.DarkYellow; break;
+                    case 4: Console.BackgroundColor = ConsoleColor.DarkCyan; break;
+                    case 5: Console.BackgroundColor = ConsoleColor.DarkRed; break;
+                    case 6: Console.BackgroundColor = ConsoleColor.DarkGray; break;
+                    default: Console.BackgroundColor = ConsoleColor.Black; break;
                 }
 
                 Console.Write(lastAttempt[i]);
                 attempt += lastAttempt[i];
-
-                Console.BackgroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.Black; 
             }
         }
-
 
         public static int GetContinue()
         {
             int tries = 0;
-        do
+            do
             {
                 switch (Console.ReadLine())
                 {
-                    case "Si":
-                        return 1;
-                    case "si":
-                        return 1;
-                    case "No":
-                        return 0;
-                    case "no":
-                        return 0;
+                    case "Si": case "si": return 1;
+                    case "No": case "no": return 0;
                     default:
                         Console.WriteLine("Valor no valid, respon amb Si o No");
                         tries++;
@@ -215,7 +197,6 @@ namespace Mastermin {
             int tries = 0;
             while (tries < 10)
             {
-                bool flag = true;
                 Console.Write(PromtCombination);
                 string input = Console.ReadLine();
                 string[] numbers = input.Split(' ');
@@ -224,14 +205,8 @@ namespace Mastermin {
                 {
                     Console.WriteLine(InvalidFormat);
                     tries++;
-                    flag = false;
                 }
                 else
-                {
-                    flag = true;
-                }
-
-                if (flag == true)
                 {
                     bool validInput = true;
 
